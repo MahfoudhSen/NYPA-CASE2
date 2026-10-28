@@ -84,19 +84,19 @@ export default function BuildingEnergyPredictor() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white p-8">
+    <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-            <Building2 className="w-10 h-10 text-blue-400" />
+            <Building2 className="w-10 h-10 text-white" />
             Building Energy Prediction System
           </h1>
-          <p className="text-slate-300 text-lg">
+          <p className="text-gray-400 text-lg">
             Predict building energy consumption using historical data
           </p>
-          <div className="mt-4 bg-blue-500/20 border border-blue-500/50 rounded-lg p-4">
-            <p className="text-blue-200 text-sm">
+          <div className="mt-4 bg-white/10 border border-white/30 rounded-lg p-4">
+            <p className="text-gray-300 text-sm">
               <strong>Student Project:</strong> Use historical building data to estimate energy consumption.
               Calculate average energy per square foot and predict new building consumption.
             </p>
@@ -105,7 +105,7 @@ export default function BuildingEnergyPredictor() {
 
         {/* Building Type Filter */}
         <div className="mb-6">
-          <label className="text-slate-300 text-sm font-medium mb-2 block">
+          <label className="text-gray-400 text-sm font-medium mb-2 block">
             Filter by Building Type:
           </label>
           <div className="flex flex-wrap gap-2">
@@ -113,10 +113,10 @@ export default function BuildingEnergyPredictor() {
               <button
                 key={type}
                 onClick={() => setSelectedBuildingType(type)}
-                className={`px-4 py-2 rounded-lg transition-all ${
+                className={`px-4 py-2 rounded-lg transition-all border ${
                   selectedBuildingType === type
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-white text-black border-white'
+                    : 'bg-black text-white border-white/30 hover:bg-white/10'
                 }`}
               >
                 {type}
@@ -127,44 +127,44 @@ export default function BuildingEnergyPredictor() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
+          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
             <div className="flex items-center gap-2 mb-2">
-              <Calculator className="w-5 h-5 text-blue-400" />
-              <h3 className="text-slate-400 text-sm font-medium">Avg Energy/Sq Ft</h3>
+              <Calculator className="w-5 h-5 text-white" />
+              <h3 className="text-gray-400 text-sm font-medium">Avg Energy/Sq Ft</h3>
             </div>
-            <p className="text-3xl font-bold text-blue-400">{averageEnergyPerSqFt.toFixed(2)}</p>
-            <p className="text-slate-400 text-xs mt-1">kWh/sqft/year</p>
+            <p className="text-3xl font-bold text-white">{averageEnergyPerSqFt.toFixed(2)}</p>
+            <p className="text-gray-400 text-xs mt-1">kWh/sqft/year</p>
           </div>
 
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
+          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="w-5 h-5 text-green-400" />
-              <h3 className="text-slate-400 text-sm font-medium">Overall Accuracy</h3>
+              <Target className="w-5 h-5 text-white" />
+              <h3 className="text-gray-400 text-sm font-medium">Overall Accuracy</h3>
             </div>
-            <p className="text-3xl font-bold text-green-400">{overallAccuracy.toFixed(1)}%</p>
-            <p className="text-slate-400 text-xs mt-1">Average prediction accuracy</p>
+            <p className="text-3xl font-bold text-white">{overallAccuracy.toFixed(1)}%</p>
+            <p className="text-gray-400 text-xs mt-1">Average prediction accuracy</p>
           </div>
 
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
-            <h3 className="text-slate-400 text-sm font-medium mb-2">Training Buildings</h3>
-            <p className="text-3xl font-bold text-yellow-400">{training.length}</p>
-            <p className="text-slate-400 text-xs mt-1">Historical data</p>
+          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
+            <h3 className="text-gray-400 text-sm font-medium mb-2">Training Buildings</h3>
+            <p className="text-3xl font-bold text-white">{training.length}</p>
+            <p className="text-gray-400 text-xs mt-1">Historical data</p>
           </div>
 
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
-            <h3 className="text-slate-400 text-sm font-medium mb-2">Test Buildings</h3>
-            <p className="text-3xl font-bold text-purple-400">{test.length}</p>
-            <p className="text-slate-400 text-xs mt-1">Predictions made</p>
+          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
+            <h3 className="text-gray-400 text-sm font-medium mb-2">Test Buildings</h3>
+            <p className="text-3xl font-bold text-white">{test.length}</p>
+            <p className="text-gray-400 text-xs mt-1">Predictions made</p>
           </div>
         </div>
 
         {/* Prediction Method Explanation */}
-        <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 mb-8">
+        <div className="bg-white/5 border border-white/20 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-blue-400" />
+            <TrendingUp className="w-6 h-6 text-white" />
             How the Prediction Works
           </h2>
-          <div className="space-y-3 text-slate-300">
+          <div className="space-y-3 text-gray-300">
             <p>
               <strong>Step 1:</strong> Calculate average energy consumption per square foot from{' '}
               {training.length} historical buildings
@@ -173,7 +173,7 @@ export default function BuildingEnergyPredictor() {
             <p>
               <strong>Step 2:</strong> For each test building, predict consumption using:
             </p>
-            <div className="bg-slate-900/50 rounded-lg p-4 font-mono text-sm">
+            <div className="bg-black/50 border border-white/20 rounded-lg p-4 font-mono text-sm">
               Predicted Energy = Building Size (sq ft) × Average Energy/Sq Ft
             </div>
             <p>
@@ -183,62 +183,62 @@ export default function BuildingEnergyPredictor() {
         </div>
 
         {/* Comparison Chart */}
-        <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 mb-8">
+        <div className="bg-white/5 border border-white/20 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Predicted vs Actual Energy Consumption</h2>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={comparisonData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-              <XAxis dataKey="name" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" label={{ value: 'kWh/year', angle: -90, position: 'insideLeft' }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#555" />
+              <XAxis dataKey="name" stroke="#aaa" />
+              <YAxis stroke="#aaa" label={{ value: 'kWh/year', angle: -90, position: 'insideLeft', fill: '#aaa' }} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '8px' }}
+                contentStyle={{ backgroundColor: '#000', border: '1px solid #fff', borderRadius: '8px', color: '#fff' }}
               />
               <Legend />
-              <Bar dataKey="Predicted" fill="#3b82f6" />
-              <Bar dataKey="Actual" fill="#22c55e" />
+              <Bar dataKey="Predicted" fill="#666" />
+              <Bar dataKey="Actual" fill="#fff" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Detailed Predictions Table */}
-        <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 mb-8">
+        <div className="bg-white/5 border border-white/20 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Detailed Prediction Results</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Building</th>
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Type</th>
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Size (sq ft)</th>
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Predicted (kWh)</th>
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Actual (kWh)</th>
-                  <th className="text-left py-3 px-4 text-slate-400 font-medium">Accuracy</th>
+                <tr className="border-b border-white/20">
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Building</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Type</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Size (sq ft)</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Predicted (kWh)</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Actual (kWh)</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Accuracy</th>
                 </tr>
               </thead>
               <tbody>
                 {predictions.map((pred, idx) => (
-                  <tr key={idx} className="border-b border-slate-700/50">
+                  <tr key={idx} className="border-b border-white/10">
                     <td className="py-3 px-4">{pred.building.name}</td>
                     <td className="py-3 px-4">
-                      <span className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded text-sm">
+                      <span className="bg-white/10 text-white px-2 py-1 rounded text-sm border border-white/20">
                         {pred.building.type}
                       </span>
                     </td>
                     <td className="py-3 px-4">{pred.building.squareFeet.toLocaleString()}</td>
-                    <td className="py-3 px-4 text-blue-400 font-semibold">
+                    <td className="py-3 px-4 text-gray-300 font-semibold">
                       {pred.predicted.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                     </td>
-                    <td className="py-3 px-4 text-green-400 font-semibold">
+                    <td className="py-3 px-4 text-white font-semibold">
                       {pred.actual.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                     </td>
                     <td className="py-3 px-4">
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-semibold ${
                           pred.accuracy >= 90
-                            ? 'bg-green-500/20 text-green-400'
+                            ? 'bg-white/20 text-white border border-white/30'
                             : pred.accuracy >= 80
-                            ? 'bg-yellow-500/20 text-yellow-400'
-                            : 'bg-red-500/20 text-red-400'
+                            ? 'bg-white/10 text-gray-300 border border-white/20'
+                            : 'bg-white/5 text-gray-400 border border-white/10'
                         }`}
                       >
                         {pred.accuracy.toFixed(1)}%
@@ -252,27 +252,27 @@ export default function BuildingEnergyPredictor() {
         </div>
 
         {/* Training Data Reference */}
-        <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6">
+        <div className="bg-white/5 border border-white/20 rounded-xl p-6">
           <h2 className="text-xl font-semibold mb-4">Training Data (Historical Buildings)</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">ID</th>
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">Building</th>
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">Type</th>
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">Size</th>
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">Energy/Sq Ft</th>
-                  <th className="text-left py-2 px-3 text-slate-400 font-medium">Total Energy</th>
+                <tr className="border-b border-white/20">
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">ID</th>
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">Building</th>
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">Type</th>
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">Size</th>
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">Energy/Sq Ft</th>
+                  <th className="text-left py-2 px-3 text-gray-400 font-medium">Total Energy</th>
                 </tr>
               </thead>
               <tbody>
                 {training.map((building) => (
-                  <tr key={building.id} className="border-b border-slate-700/50">
-                    <td className="py-2 px-3 text-slate-400">{building.id}</td>
+                  <tr key={building.id} className="border-b border-white/10">
+                    <td className="py-2 px-3 text-gray-400">{building.id}</td>
                     <td className="py-2 px-3">{building.name}</td>
                     <td className="py-2 px-3">
-                      <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded text-xs">
+                      <span className="bg-white/10 text-gray-300 px-2 py-1 rounded text-xs border border-white/20">
                         {building.type}
                       </span>
                     </td>
