@@ -1,6 +1,6 @@
-# NYISO Energy Mix & Emissions Analyzer
+# Building Energy Prediction System
 
-Interactive educational dashboard for exploring New York's electricity generation and understanding energy sources.
+Student-friendly dashboard for predicting building energy consumption using historical data.
 
 ![Dashboard Preview](https://img.shields.io/badge/Next.js-16.4-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
@@ -8,43 +8,45 @@ Interactive educational dashboard for exploring New York's electricity generatio
 
 ## Overview
 
-**Student-friendly dashboard** designed to help learners understand:
-- Where New York's electricity comes from
-- How different energy sources impact emissions
-- Patterns in energy demand and generation
-- The relationship between clean/fossil fuel energy
+**Educational project** where students learn to predict energy consumption by:
+- Using historical building data
+- Calculating average energy per square foot
+- Making predictions for new buildings
+- Comparing predicted vs actual consumption
+
+### Main Question
+
+**Can we use information from existing buildings to estimate how much energy another building might consume?**
 
 ## Features
 
-### Interactive Visualizations
-- **Energy Generation Chart** - Stacked bar chart showing all energy sources over time
-- **Emissions Timeline** - Line graph tracking CO2 output
-- **Fuel Mix Breakdown** - Pie chart of energy source distribution
-- **Clean vs Fossil Comparison** - Visual split between renewable and fossil energy
-- **24-Hour Pattern Analysis** - Radar chart showing demand cycles
+### Simple Prediction Method
+- Calculate average energy usage per square foot from historical building records
+- Use this average to estimate another building's consumption
+- Compare the estimate with actual usage
 
-### Time Range Selection
-- Last 24 hours
-- Last week
-- Last month
+### Interactive Dashboard
+- **Building Type Filter** - Filter predictions by Office, Residential, Retail, School, or Hospital
+- **Key Metrics Display** - Average energy/sqft, overall accuracy, training/test split
+- **Prediction Explanation** - Step-by-step breakdown of the prediction method
+- **Comparison Chart** - Visual comparison of predicted vs actual consumption
+- **Detailed Results Table** - Individual building predictions with accuracy scores
+- **Training Data Table** - View all historical buildings used for calculations
 
-### View Modes
-- **Energy View** - Focus on power generation (MW)
-- **Emissions View** - Focus on CO2 output (metric tons)
+### Educational Value
 
-### Key Metrics Display
-- Average clean energy percentage
-- Total emissions
-- Top energy source
-- Cleanest time period
+Students learn:
+1. **Data-driven prediction** - Using historical patterns to forecast future values
+2. **Statistical concepts** - Averages, accuracy metrics, train/test splits
+3. **Real-world application** - Building energy efficiency and sustainability
+4. **Critical thinking** - Evaluating prediction accuracy and limitations
 
 ## Tech Stack
 
 - **Next.js 16** - React framework with App Router
 - **TypeScript** - Type-safe development
-- **Recharts** - Interactive charts and graphs
+- **Recharts** - Interactive data visualizations
 - **Tailwind CSS** - Modern styling
-- **date-fns** - Date utilities
 - **Lucide React** - Icons
 
 ## Getting Started
@@ -72,85 +74,126 @@ npm start
 
 ## How It Works
 
-### Data Generation
+### Prediction Method
 
-The app simulates realistic NYISO (New York Independent System Operator) fuel mix data:
+**Step 1:** Calculate average energy per square foot
+```
+Average Energy/Sq Ft = Total Energy from All Buildings / Total Square Feet
+```
 
-**Typical New York Energy Mix:**
-- Nuclear: ~30% (always on, baseload power)
-- Natural Gas: ~40% (flexible, responds to demand)
-- Hydro: ~20% (varies by season, higher in spring)
-- Wind/Solar/Renewables: ~10% (varies by time and weather)
+**Step 2:** Predict new building consumption
+```
+Predicted Energy = Building Size (sq ft) × Average Energy/Sq Ft
+```
 
-### Daily Patterns
-- **Peak hours**: 2-6 PM (highest demand)
-- **Night hours**: Lower overall demand
-- **Solar**: Only during daylight, peaks at noon
-- **Wind**: Higher at night and in winter
+**Step 3:** Evaluate accuracy
+```
+Accuracy = 100 - (|Predicted - Actual| / Actual × 100)
+```
 
-### Seasonal Variations
-- **Summer**: Higher AC demand
-- **Winter**: Higher heating demand
-- **Spring**: Maximum hydro generation
+### Dataset
 
-## Educational Value
+The dashboard includes 13 NYC buildings across 5 types:
 
-### Learning Objectives
+**Building Types:**
+- **Office** - ~17.5 kWh/sqft/year (corporate towers, tech hubs)
+- **Residential** - ~12.0 kWh/sqft/year (apartments, condos)
+- **Retail** - ~22.0 kWh/sqft/year (shopping centers, malls)
+- **School** - ~15.0 kWh/sqft/year (educational institutions)
+- **Hospital** - ~30.0 kWh/sqft/year (medical centers, 24/7 operation)
 
-Students can:
-1. **Analyze energy sources** - Compare renewable vs fossil fuels
-2. **Understand emissions** - See how fuel mix affects CO2 output
-3. **Identify patterns** - Discover daily and seasonal demand cycles
-4. **Make connections** - Link energy choices to environmental impact
+**Dataset includes:**
+- Building ID
+- Building name
+- Building type
+- Size (square feet)
+- Number of floors
+- Year built
+- Annual energy consumption (kWh)
+- Energy consumption per square foot (kWh/sqft)
 
-### Key Findings Section
+### Data Split
 
-Automated insights help students:
-- Identify the dominant energy source
-- Calculate clean energy percentage
-- Evaluate progress toward decarbonization
-- Understand real-world energy systems
+- **70% Training Data** - Historical buildings used to calculate average
+- **30% Test Data** - Buildings used to test prediction accuracy
 
-## Visualizations Explained
+## Deliverables
 
-### Stacked Bar Chart (Energy View)
-Shows how different energy sources contribute to total generation at each time point.
+This project includes:
 
-### Line Chart (Emissions View)
-Tracks CO2 emissions over time alongside clean energy percentage.
+✓ **One simple prediction method** - Average energy per square foot
+✓ **Predictions for test buildings** - 30% of dataset held out for testing
+✓ **Comparison between predicted and actual** - Side-by-side bar chart
+✓ **Chart displaying results** - Interactive visualizations
+✓ **Brief explanation of findings** - Step-by-step prediction breakdown
 
-### Pie Charts
-- **Energy Source Distribution**: Proportions of each fuel type
-- **Clean vs Fossil**: Simple two-way comparison
+## Implementation Levels
 
-### Radar Chart
-Displays 24-hour patterns for demand and clean energy availability.
+### Minimum (Current)
+- Simple Building Energy Predictor
+- Calculate average energy usage per square foot
+- Estimate consumption and compare with actual usage
+
+### Intermediate (Future)
+- Add simple linear regression model
+- Compare regression vs average method
+- Show which method performs better
+
+### Advanced (Future)
+- Include additional building characteristics (age, floors, etc.)
+- Compare multiple prediction methods
+- Evaluate accuracy with different metrics
+- Export data to CSV
 
 ## Use Cases
 
-- **Classroom projects** - Energy and environment education
-- **Research assignments** - Data analysis practice
-- **Science fairs** - Interactive demonstration
-- **Policy exploration** - Understanding energy transitions
-- **STEM learning** - Real-world data science
+- **Classroom projects** - Data science and statistics education
+- **Energy efficiency** - Understanding building consumption patterns
+- **Sustainability** - Identifying high-energy buildings
+- **Urban planning** - Estimating energy needs for new construction
+- **STEM learning** - Real-world math and science application
 
-## Future Features
+## Learning Outcomes
 
-- [ ] Compare different states/regions
-- [ ] Historical trend analysis
-- [ ] Quiz mode for learning
-- [ ] Custom scenario modeling
-- [ ] Print-friendly reports
-- [ ] Data export for projects
+After using this dashboard, students should be able to:
+
+1. Explain how historical data can predict future outcomes
+2. Calculate and interpret averages
+3. Evaluate prediction accuracy
+4. Understand factors affecting building energy consumption
+5. Apply simple statistical methods to real-world problems
+
+## Future Enhancements
+
+- [ ] Add linear regression prediction method
+- [ ] Include building age and floor count in predictions
+- [ ] Compare prediction methods side-by-side
+- [ ] Export predictions to CSV
+- [ ] Add more building types
+- [ ] Include seasonal energy variations
+- [ ] Real NYC building data integration
+
+## Dataset Notes
+
+The current dataset uses realistic but simulated data based on:
+- NYC typical energy consumption patterns
+- EPA building energy benchmarks
+- Industry-standard kWh/sqft values by building type
+- Building age efficiency factors (older buildings less efficient)
+
+For production use, replace with actual building energy data from:
+- NYC Building Energy Benchmarking
+- Energy Star Portfolio Manager
+- Local utility company records
 
 ## Contributing
 
-We welcome contributions! Ideas for improvements:
-- Add more educational content
-- Create guided tours
-- Build quiz questions
+Contributions welcome! Ideas for improvements:
+- Add more prediction methods
+- Include more building characteristics
+- Create guided tutorials
+- Add quiz questions
 - Improve visualizations
-- Add accessibility features
 
 ## License
 
@@ -158,11 +201,10 @@ MIT
 
 ## Acknowledgments
 
-- NYISO for data structure inspiration
-- EPA for emission factor standards
-- New York Power Authority (NYPA)
-- PowerHack organizers
+- NYPA PowerHack for project inspiration
+- NYC Building Energy Benchmarking program
+- Energy Star for building energy standards
 
 ---
 
-Built for PowerHack - Making energy data accessible to students everywhere!
+Built for PowerHack - Teaching students data-driven energy prediction!
